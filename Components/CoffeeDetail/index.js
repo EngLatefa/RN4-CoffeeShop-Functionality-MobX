@@ -21,13 +21,15 @@ import styles from "./styles";
 
 //Store
 import CoffeeStore from "../../store/coffeeStore";
+import cartStore from "../../store/cartStore";
 
 class CoffeeDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       drink: "Coffee",
-      option: "Small"
+      option: "Small",
+      quantity: 1
     };
   }
   static navigationOptions = ({ navigation }) => ({
@@ -106,7 +108,11 @@ class CoffeeDetail extends Component {
               </Picker>
             </Body>
           </ListItem>
-          <Button full danger>
+          <Button
+            full
+            danger
+            onPress={() => cartStore.addItemToCart(this.state)}
+          >
             <Text>Add</Text>
           </Button>
         </List>
