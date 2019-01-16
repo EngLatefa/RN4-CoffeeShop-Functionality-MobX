@@ -22,6 +22,7 @@ import styles from "./styles";
 //Store
 import CoffeeStore from "../../store/coffeeStore";
 import cartStore from "../../store/cartStore";
+import CartButton from "../Buttons/CartButton";
 
 class CoffeeDetail extends Component {
   constructor(props) {
@@ -34,21 +35,7 @@ class CoffeeDetail extends Component {
   }
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam("shop", {}).name,
-    headerRight: (
-      <Button
-        light
-        transparent
-        onPress={() => navigation.navigate("CoffeeCart")}
-      >
-        <Text>
-          <Icon
-            type="FontAwesome"
-            name="coffee"
-            style={{ color: "white", fontSize: 15 }}
-          />
-        </Text>
-      </Button>
-    )
+    headerRight: <CartButton />
   });
   changeDrink(value) {
     this.setState({

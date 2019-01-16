@@ -1,4 +1,4 @@
-import { decorate, observable } from "mobx";
+import { decorate, observable, computed } from "mobx";
 import { Item } from "native-base";
 
 class CartStore {
@@ -26,10 +26,18 @@ class CartStore {
     this.items = [];
     alert("Have A nice Day");
   }
+
+  get itemCounter() {
+    let total = 0;
+
+    this.items.forEach(item => (total += item.quantity));
+    return total;
+  }
 }
 
 decorate(CartStore, {
-  items: observable
+  items: observable,
+  itemCounter: computed
 });
 
 export default new CartStore();
